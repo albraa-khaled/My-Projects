@@ -1,0 +1,24 @@
+[
+  {
+    "id": "t_abdali_airport",
+    "driver": "driver1",
+    "from": "Abdali",
+    "to": "Queen Alia Airport",
+    "datetime": "2025-08-20T08:30",
+    "seats": 4,
+    "price": 15,
+    "car": "Toyota Camry",
+    "plate": "AMM123"
+  },
+  {
+    "id": "t_shmeisani_zarqa",
+    "driver": "driver1",
+    "from": "Shmeisani",
+    "to": "Zarqa",
+    "datetime": "2025-08-20T09:00",
+    "seats": 3,
+    "price": 8,
+    "car": "Hyundai Elantra",
+    "plate": "AMM567"
+  }
+]

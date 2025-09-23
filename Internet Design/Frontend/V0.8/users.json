@@ -1,0 +1,5 @@
+[
+  { "username": "admin", "password": "admin", "role": "admin" },
+  { "username": "driver1", "password": "pass", "role": "driver" },
+  { "username": "user1", "password": "pass", "role": "passenger" }
+]

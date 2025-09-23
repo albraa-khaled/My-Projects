@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CarPool - Role Based</title>
+
+  <!-- Leaflet CSS -->
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">CarPool</div>
+    <div class="controls">
+      <span id="welcomeText"></span>
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn">Create Account</button>
+      <button id="logoutBtn" style="display:none">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" id="sidebar">
+      <!-- Dynamic role-based content will be rendered here -->
+    </aside>
+
+    <section class="map-area">
+      <div id="map"></div>
+      <div class="floating-btn">
+        <button id="startBookingBtn" style="display:none">Start Booking</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals: Login / Signup -->
+  <div class="modal" id="loginModal" style="display:none">
+    <div class="modal-card">
+      <h3>Login</h3>
+      <input id="loginUser" placeholder="Username" />
+      <input id="loginPass" type="password" placeholder="Password" />
+      <button id="doLogin">Login</button>
+      <button class="btn-link" id="toRegister">Create account</button>
+      <button class="modal-close" data-target="loginModal">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="registerModal" style="display:none">
+    <div class="modal-card">
+      <h3>Create Account</h3>
+      <input id="regUser" placeholder="Username" />
+      <input id="regPass" type="password" placeholder="Password" />
+      <select id="regRole">
+        <option value="passenger">Passenger</option>
+        <option value="driver">Driver</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button id="doRegister">Create</button>
+      <button class="btn-link" id="toLogin">Already have account</button>
+      <button class="modal-close" data-target="registerModal">Close</button>
+    </div>
+  </div>
+
+  <!-- Small templates used by script (hidden) -->
+  <template id="passengerTemplate">
+    <div class="card">
+      <h2>Passenger Dashboard</h2>
+
+      <div class="card-section">
+        <h4>Search Trips</h4>
+        <label>From<input id="searchFrom" placeholder="Start area"></label>
+        <label>To<input id="searchTo" placeholder="Destination"></label>
+        <label>Passengers<input id="searchPassengers" type="number" min="1" value="1"></label>
+        <label>Date<input id="searchDate" type="date"></label>
+        <button id="searchTripsBtn">Find Trips</button>
+      </div>
+
+      <div class="card-section">
+        <h4>Available Trips</h4>
+        <div id="tripList"></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="driverTemplate">
+    <div class="card">
+      <h2>Driver Dashboard</h2>
+      <div class="card-section">
+        <h4>Create Trip</h4>
+        <label>From<input id="createFrom" placeholder="Start area"></label>
+        <label>To<input id="createTo" placeholder="Destination"></label>
+        <label>Date & Time<input id="createDateTime" type="datetime-local"></label>
+        <label>Seats<input id="createSeats" type="number" min="1" value="4"></label>
+        <label>Price<input id="createPrice" type="number" min="0" value="0"></label>
+        <label>Car<input id="createCar" placeholder="Car model"></label>
+        <label>Plate<input id="createPlate" placeholder="Plate"></label>
+        <button id="createTripBtn">Create Trip</button>
+      </div>
+
+      <div class="card-section">
+        <h4>Your Trips</h4>
+        <div id="driverTripList"></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="adminTemplate">
+    <div class="card">
+      <h2>Admin Dashboard</h2>
+
+      <div class="card-section">
+        <h4>Users</h4>
+        <div id="adminUsers"></div>
+      </div>
+
+      <div class="card-section">
+        <h4>All Trips</h4>
+        <div id="adminTrips"></div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
